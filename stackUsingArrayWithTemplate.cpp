@@ -3,15 +3,15 @@ using namespace std;
 
 template <typename T> class stackUsingArray{
     T* data;
-    T capacity;
-    T nextPoTer;
+    int capacity;
+    int nextPoTer;
 
 private:
         void resize(){
-            T newCapacity = capacity*2;
+            int newCapacity = capacity*2;
             T* temp = data;
             data = new T[newCapacity];
-            for(T i=0;i<=nextPoTer;i++){
+            for(int i=0;i<=nextPoTer;i++){
                 data[i] = temp[i];
             }
             delete[] temp;
@@ -47,7 +47,7 @@ public:
         return nextPoTer == -1;
     }
 
-    T size(){
+    int size(){
         return capacity;
     }
 
@@ -56,6 +56,7 @@ public:
         if(nextPoTer != -1){
             return data[nextPoTer]; 
         }
+        return 0;
     }
 };
 
