@@ -109,6 +109,34 @@ TreeNode<int>* takeInputV1(TreeNode<int>* root){
     return root;
 }
 
+TreeNode<int>* maxNode(TreeNode<int>* root){
+    if(root->children.size() == 0){
+        return root;
+    }
+
+    TreeNode<int>* max = root;
+    for(int i=0;i<root->children.size();i++){
+        TreeNode<int>* smallMax = maxNode(root->children[i]);
+        if(max->data < smallMax->data){
+            max = smallMax;
+        }
+    }
+
+    return max;
+}
+
+
+int getHeight(TreeNode<int>* root){
+    if(root==NULL) return 0;
+
+    int max=0;
+    for(int i=0;i<root->children.size();i++){
+        int smallMax = getHeight(root->children[i]);
+        if(max < smallMax) max = smallMax;
+    }
+    return max+1;
+}
+
 int main(){
     TreeNode<int>* root;
     root = takeInputByLevels();
