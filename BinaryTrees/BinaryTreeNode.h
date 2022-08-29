@@ -13,6 +13,7 @@ class BinaryTreeNode{
 
         //delete NULL is ignored
         ~BinaryTreeNode(){
+            
             delete left;
             delete right;
         }
