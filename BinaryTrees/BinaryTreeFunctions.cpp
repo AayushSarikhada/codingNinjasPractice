@@ -96,15 +96,39 @@ int height(BinaryTreeNode<int>* root){
     return max(height(root->left),height(root->right))+1;
 }
 
+void preorder(BinaryTreeNode<int>* root){
+    if(root==NULL) return;
+
+    cout<<root->data<<" ";
+    preorder(root->left);
+    preorder(root->right);
+    return;
+}
+
+void inorder(BinaryTreeNode<int>* root){
+    if(root==NULL) return;
+    
+    preorder(root->left);
+    cout<<root->data<<" ";
+    preorder(root->right);
+    return;
+}
+
+void postOrder(BinaryTreeNode<int>* root){
+    if(root==NULL) return;
+    
+    preorder(root->left);
+    preorder(root->right);
+    cout<<root->data<<" ";
+    return;
+}
+
 //10 20 30 40 50 60 -1 -1 -1 -1 -1 -1
 int main(){
 
     BinaryTreeNode<int>* root = takeInputLevelWise();
 
-    printTreeLevelWise(root);
-
-    cout<<countNodes(root);
-    
+    preorder(root);
     delete root;
     return 0;
 }
